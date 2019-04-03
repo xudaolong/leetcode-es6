@@ -1,0 +1,19 @@
+FROM node:10.12.0-alpine
+
+MAINTAINER leetcodees6
+
+USER root
+
+ARG ENV
+
+ENV ROOT_APP_DIR=/leetcodees6
+ENV PORT=80
+RUN export NODE_ENV=${ENV}
+
+WORKDIR $ROOT_APP_DIR
+
+ADD ./ $ROOT_APP_DIR/
+
+RUN npm install
+
+EXPOSE $PORT
